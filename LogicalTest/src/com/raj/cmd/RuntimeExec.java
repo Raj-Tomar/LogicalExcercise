@@ -11,16 +11,15 @@ public class RuntimeExec {
 	}
 	private class StreamWrapper extends Thread {
 		InputStream is = null;
-		String type = null;          
 		String message = null;
 
+		@SuppressWarnings("unused")
 		public String getMessage() {
 			return message;
 		}
 
 		StreamWrapper(InputStream is, String type) {
 			this.is = is;
-			this.type = type;
 		}
 
 		public void run() {
@@ -47,13 +46,11 @@ public class RuntimeExec {
 			Process proc = rt.exec("ping localhost");
 			error = rte.getStreamWrapper(proc.getErrorStream(), "ERROR");
 			output = rte.getStreamWrapper(proc.getInputStream(), "OUTPUT");
-			int exitVal = 0;
-
 			error.start();
 			output.start();
 			error.join(3000);
 			output.join(3000);
-			exitVal = proc.waitFor();
+			proc.waitFor();
 			System.out.println("Output: "+output.message+"\nError: "+error.message);
 		} catch (IOException e) {
 			e.printStackTrace();

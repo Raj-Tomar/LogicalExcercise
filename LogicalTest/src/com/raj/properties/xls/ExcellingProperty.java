@@ -14,19 +14,16 @@ import org.apache.poi.hssf.usermodel.HSSFRichTextString;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.poifs.filesystem.POIFSFileSystem;
 
 public class ExcellingProperty {
 
 	private File fileProp = null;
 	private FileInputStream fisProp = null;
 	private Properties properties = null;
-	private static ArrayList propertiesKey = new ArrayList();
-	private static ArrayList propertiesValue = new ArrayList();
+	private static ArrayList<String> propertiesKey = new ArrayList<String>();
+	private static ArrayList<String> propertiesValue = new ArrayList<String>();
 	private File fileExcel = null;
-	private FileInputStream fisExcel = null;
 	private FileOutputStream fosExcel = null;
-	private POIFSFileSystem fileSystem = null;
 	public void readPropertyFile(String propertiesFilePath) {
 		fileProp = new File(propertiesFilePath);
 		if (fileProp.isFile()) {
@@ -35,7 +32,7 @@ public class ExcellingProperty {
 				properties = new Properties();
 				// reading properties file
 				properties.load(fisProp);
-				Enumeration keysEnum = properties.keys();
+				Enumeration<?> keysEnum = properties.keys();
 				propertiesKey.add(fileProp.getName());
 				propertiesValue.add("");
 				while (keysEnum.hasMoreElements()) {

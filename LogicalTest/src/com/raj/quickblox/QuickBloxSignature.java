@@ -40,6 +40,7 @@ public class QuickBloxSignature {
 	} 
 	
 
+	@SuppressWarnings("resource")
 	private static String toHexString(byte[] bytes) {
 		Formatter formatter = new Formatter();
 		
