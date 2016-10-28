@@ -2,32 +2,38 @@ package com.raj.string;
 
 public class CharCount {
 
-	/**
-	 * @param args
-	 */
 	public static void main(String[] args) {
-
-		/*Scanner sc = new Scanner(System.in);
-		System.out.print("Enter String: ");
-		*/
-		String str = "aaaee";
+		String str = "abcdefaaabbbcccdddeeefff";
 		CharCount cc = new CharCount();
-		cc.charCount(str);
-	}
-
-	public void charCount(String str) {
-		int count = 0;
-		for(int i=0; i<str.length(); i++){
-			for(int j=0; j<str.length(); j++)
-				if(str.charAt(i)==str.charAt(j))
-					count++;
-			//printChars(str.charAt(i),count, str);
-			System.out.println(str.charAt(i)+" "+count);
-			count = 0;
-		}
+		String uni = cc.getUniqueChar(str);
+		cc.charCount(uni, str);
 	}
 	
-	public void printChars(char str, int count, String st){
-		System.out.println(str+" "+count);
+	/**
+	 * @param originalString
+	 * @return
+	 */
+	public String getUniqueChar(String originalString){
+	      String uniqueCharacters = "";
+	      for ( int i = 0; i < originalString.length(); i++ ) {
+	         if( uniqueCharacters.indexOf(originalString.charAt(i)) == -1 )
+	        	 uniqueCharacters += originalString.charAt(i);
+	      }
+	      return uniqueCharacters;
+	}
+	
+	/**
+	 * @param uniqueCharacters
+	 * @param originalString
+	 */
+	public void charCount(String uniqueCharacters, String originalString) {
+		int count = 0;
+		for ( int i = 0; i < uniqueCharacters.length(); i++ ) {
+			for ( int j = 0; j < originalString.length(); j++ )
+				if( uniqueCharacters.charAt(i) == originalString.charAt(j) )
+					count++;
+			System.out.println(uniqueCharacters.charAt(i)+" "+count);
+			count = 0;
+		}
 	}
 }
