@@ -1,4 +1,4 @@
-package com.raj.pastdate;
+package com.raj.date.time;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;

@@ -1,4 +1,4 @@
-package com.raj.calendar;
+package com.raj.date.time;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
