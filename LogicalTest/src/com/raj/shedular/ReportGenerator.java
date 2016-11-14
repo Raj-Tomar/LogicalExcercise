@@ -7,7 +7,6 @@ import java.util.TimerTask;
 public class ReportGenerator extends TimerTask {
 	public void run() {
 	    System.out.println("Generating report");
-	    //TODO generate report
 	  }
 
 }
