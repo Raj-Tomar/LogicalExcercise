@@ -86,6 +86,7 @@ public class ExcellingProperty {
 			workBook.write(fosExcel);
 			fosExcel.flush();
 			fosExcel.close();
+			workBook.close();
 		} catch (FileNotFoundException fnfe) {
 			System.out.println("xls file not found");
 			fnfe.printStackTrace();
