@@ -9,6 +9,7 @@ dependencies {
 	compile group: 'org.imgscalr', name: 'imgscalr-lib', version: '4.2'
 	compile group: 'net.coobird', name: 'thumbnailator', version: '0.4.8'
 }
+<<<<<<< HEAD
 apply plugin: 'java'
 
 repositories {
@@ -21,3 +22,5 @@ dependencies {
 	compile group: 'net.coobird', name: 'thumbnailator', version: '0.4.8'
 	compile group: 'javax.mail', name: 'mail', version: '1.4.7'
 }
+=======
+>>>>>>> branch 'master' of https://github.com/Raj-Tomar/LogicalExcercise.git
