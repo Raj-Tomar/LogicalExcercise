@@ -12,7 +12,7 @@ public class ReadWriteJackson2 {
 		Person q = mapper.readValue(jsonInput, Person.class);
 		System.out.println("Read and parsed Person from JSON: " + q);
 		Person p = new Person("Roger", "Rabbit");
-		System.out.print("Person object " + p + " as JSON = ");
+		System.out.print("Person object " + p + " as JSON = \n");
 		mapper.writeValue(System.out, p);
 	}
 
