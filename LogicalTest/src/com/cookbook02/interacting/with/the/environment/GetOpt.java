@@ -13,4 +13,8 @@ public class GetOpt {
 		return 0;
 	}
 
+	public String optarg() {
+		return null;
+	}
+
 }
