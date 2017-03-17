@@ -14,6 +14,7 @@ public class DateTimeDifference {
 		zonedDateTimeDifference();
 		String diff = differenceBetweenGivenDates("2017-03-13 14:02:26");
 		System.out.println("Difference : "+diff);
+		System.out.println(secondToYears(844756));
 	}
 
 	public static String differenceBetweenGivenDates(String dateStart) {
@@ -109,5 +110,14 @@ public class DateTimeDifference {
 		long days = milieSeconds / (24 * 60 * 60 * 1000);
 		System.out.println(days);
 
+	}
+	
+	public static String secondToYears(long seconds) {
+		double numyears = Math.floor(seconds / 31536000);
+		double numdays = Math.floor((seconds % 31536000) / 86400);
+		double numhours = Math.floor(((seconds % 31536000) % 86400) / 3600);
+		double numminutes = Math.floor((((seconds % 31536000) % 86400) % 3600) / 60);
+		double numseconds = (((seconds % 31536000) % 86400) % 3600) % 60;
+		return numyears + " years " + numdays + " days " + numhours + " hours " + numminutes + " minutes " + numseconds + " seconds";
 	}
 }
