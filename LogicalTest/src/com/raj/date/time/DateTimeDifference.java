@@ -1,19 +1,20 @@
 package com.raj.date.time;
 
 import java.text.DateFormat;
+import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.ZonedDateTime;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
+import java.util.concurrent.TimeUnit;
 
 public class DateTimeDifference {
 
 	public static void main(String[] args) throws ParseException {
 		zonedDateTimeDifference();
-		String diff = differenceBetweenGivenDates("2017-03-13 14:02:26");
-		System.out.println("Difference : "+diff);
+		System.out.println("Difference : "+differenceBetweenGivenDates("2017-03-13 14:02:26"));
 		System.out.println(secondToYears(844756));
 	}
 
@@ -118,6 +119,26 @@ public class DateTimeDifference {
 		double numhours = Math.floor(((seconds % 31536000) % 86400) / 3600);
 		double numminutes = Math.floor((((seconds % 31536000) % 86400) % 3600) / 60);
 		double numseconds = (((seconds % 31536000) % 86400) % 3600) % 60;
+		
+		
+		long secondsIn = seconds;
+		long dayCount = TimeUnit.SECONDS.toDays(secondsIn);
+		long secondsCount = secondsIn - TimeUnit.DAYS.toSeconds(dayCount);
+		long hourCount = TimeUnit.SECONDS.toHours(secondsCount);
+		secondsCount -= TimeUnit.HOURS.toSeconds(hourCount);
+		long minutesCount = TimeUnit.SECONDS.toMinutes(secondsCount);
+		secondsCount -= TimeUnit.MINUTES.toSeconds(minutesCount);
+		
+		StringBuilder sb = new StringBuilder();
+		sb.append(String.format("%d %s, ", dayCount, (dayCount == 1) ? "day" : "days"));
+		StringBuilder sb2 = new StringBuilder();
+		sb2.append(sb.toString());
+		sb2.append(String.format("%02d:%02d:%02d %s", hourCount, minutesCount, secondsCount, (hourCount == 1) ? "hour" : "hours"));
+		sb.append(String.format("%d %s, ", hourCount, (hourCount == 1) ? "hour" : "hours"));
+		sb.append(String.format("%d %s and ", minutesCount, (minutesCount == 1) ? "minute" : "minutes"));
+		sb.append(String.format("%d %s.", secondsCount, (secondsCount == 1) ? "second" : "seconds"));
+		System.out.printf("You entered %s seconds, which is %s (%s)%n", new DecimalFormat("#,###").format(secondsIn), sb, sb2);
+		
 		return numyears + " years " + numdays + " days " + numhours + " hours " + numminutes + " minutes " + numseconds + " seconds";
 	}
 }
