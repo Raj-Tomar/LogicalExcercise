@@ -2,6 +2,7 @@ package com.raj.interview.questions;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
@@ -29,10 +30,24 @@ public class ArrayListQuestions {
 		
 		//list = removeDuplicatesUsingSet(list);
 		//list = removeDuplicateLogic1(list);
-		list = removeDuplicatesFromList(list);
-		for (Integer i : list) {
+		//list = removeDuplicatesFromList(list);
+		
+		//for (Integer i : list) System.out.println(i);
+		
+		
+		list = new ArrayList<Integer>();
+		list.add(1);
+		list.add(1);
+		list.add(2);
+		list.add(3);
+		list.add(1);
+		list.add(3);
+		list.add(2);
+		
+		list = removeElementFromList(list);
+		for(Integer i : list)
 			System.out.println(i);
-		}
+		
 	}
 	
 	public static List<Integer> removeDuplicatesUsingSet(List<Integer> list) {
@@ -61,5 +76,30 @@ public class ArrayListQuestions {
 				uni.add(i);
 		}
 		return uni;
+	}
+	
+	public static List<Integer> removeElementFromList(List<Integer> list){
+		// This is a clever way to create the iterator and call iterator.hasNext() like
+		// you would do in a while-loop. It would be the same as doing:
+		// Iterator<Integer> iterator = list.iterator();
+		//	while (iterator.hasNext()) {
+		
+		Iterator<Integer> it = list.iterator();
+		while(it.hasNext()){
+			Integer no = it.next();
+			if(no == 1)
+				it.remove();
+		}
+		
+		/*
+		 for (Iterator<Integer> iterator = list.iterator(); iterator.hasNext();) {
+			Integer string = iterator.next();
+			if (string==1 ) {
+				// Remove the current element from the iterator and the list.
+				iterator.remove();
+			}
+		}
+		*/
+		return list;
 	}
 }
